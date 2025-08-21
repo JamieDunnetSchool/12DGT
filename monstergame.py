@@ -18,13 +18,17 @@ while True:
                           choices=["View Cards", "Add Card", "Search/Change", "Delete Card", "Exit"])
     
     if choice == "View Cards":
-        
+
         output = ""
-        for Monsters_name, Monsters_info in Monsters.items():
-            output += f"\nCombo Name: {Monsters_name}\n" 
-            for item, price in zip(Monsters_info["items"], Monsters_info["prices"]):
-                output += f"  - {item}: ${price:.2f}\n"
-        eg.msgbox(output, "Menu")
+        for monster_id, info in Monsters.items():
+            output += (
+                f"\n#{monster_id} — {info['Name']}\n"
+                f"  Strength: {info['Strength']}\n"
+                f"  Speed:    {info['Speed']}\n"
+                f"  Stealth:  {info['Stealth']}\n"
+                f"  Cunning:  {info['Cunning']}\n"
+            )
+        eg.msgbox(output or "No monsters yet.", "Monster Cards")
 
     elif choice == "Add Card":
 
