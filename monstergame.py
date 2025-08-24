@@ -42,13 +42,13 @@ while True:
 
     elif choice == "Delete Card":
          
-        delete = eg.enterbox("Enter the name of the Monster you want to delete:")
+        delete = eg.enterbox("Enter the name of the Monster you want to delete:", title="Delete")
         if delete in Monsters:
             if eg.ynbox(f"Are you sure you want to delete '{delete}'?", "Confirm Delete"):
                 del Monsters[delete]
                 eg.msgbox(f"'{delete}' monster deleted.")
         else:
-            eg.msgbox("Combo not found.")
+            eg.msgbox("Monster not found.")
 
     elif choice == "Exit":
 
