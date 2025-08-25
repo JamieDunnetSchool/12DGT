@@ -31,10 +31,22 @@ while True:
         eg.msgbox(output or "No monsters yet.", "Monster Cards")
 
     elif choice == "Add Card":
+     
+        name = eg.enterbox("Enter the name of the new Monster:")
+        if name:
+                strength = int(eg.enterbox(f"Enter {name}'s Strength:"))
+                speed = int(eg.enterbox(f"Enter {name}'s Speed:"))
+                stealth = int(eg.enterbox(f"Enter {name}'s Stealth:"))
+                cunning = int(eg.enterbox(f"Enter {name}'s Cunning:"))
 
+                Monsters[name] = {
+                    "Strength": strength,
+                    "Speed": speed,
+                    "Stealth": stealth,
+                    "Cunning": cunning
+                }
 
-        print("Add Card")
-
+                eg.msgbox(f"Monster '{name}' added successfully!")
 
     elif choice == "Search/Change":
 
