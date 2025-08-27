@@ -49,7 +49,31 @@ while True:
                 eg.msgbox(f"Monster '{name}' added successfully!")
 
     elif choice == "Search/Change":
-        eg.enterbox
+        search = eg.enterbox("Enter the name of the combo to search:")
+        if search in Monsters:
+            combo = menu[search]
+            message = f"Combo Name: {search}\n"
+            for item, price in zip(combo["items"], combo["prices"]):
+                message += f"  - {item}: ${price:.2f}\n"
+            eg.msgbox(message, "Combo Details")
+            if eg.ynbox("Do you want to change this combo?", "Edit Combo"):
+                items = []
+                prices = []
+                for i in range(3):
+                    item = eg.enterbox(f"Enter new item {i+1} name:", default=combo["items"][i])
+                    price = eg.enterbox(f"Enter new price for {item}:", default=str(combo["prices"][i]))
+                    try:
+                        price = float(price)
+                        items.append(item)
+                        prices.append(price)
+                    except:
+                        eg.msgbox("Invalid price. Cancelling update.")
+                        break
+                else:
+                    menu[search] = {"items": items, "prices": prices}
+                    eg.msgbox("Combo updated successfully.")
+        else:
+            eg.msgbox("Monster not found.")
 
     elif choice == "Delete Card":
          
