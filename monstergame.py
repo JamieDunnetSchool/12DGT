@@ -40,38 +40,45 @@ while True:
                 cunning = int(eg.enterbox(f"Enter {name}'s Cunning 0-25:"))
 
                 Monsters[name] = {
-                    "Strength": strength,
-                    "Speed": speed,
-                    "Stealth": stealth,
-                    "Cunning": cunning
+                f"\nName: {monster_id} \n"
+                f"  Strength: {info['Strength']}\n"
+                f"  Speed:    {info['Speed']}\n"
+                f"  Stealth:  {info['Stealth']}\n"
+                f"  Cunning:  {info['Cunning']}\n"
                 }
 
                 eg.msgbox(f"Monster '{name}' added successfully!")
 
     elif choice == "Search/Change":
-        search = eg.enterbox("Enter the name of the combo to search:")
+          
+        search = eg.enterbox("Enter the name of the monster to search:")
         if search in Monsters:
-            combo = menu[search]
-            message = f"Combo Name: {search}\n"
-            for item, price in zip(combo["items"], combo["prices"]):
-                message += f"  - {item}: ${price:.2f}\n"
-            eg.msgbox(message, "Combo Details")
-            if eg.ynbox("Do you want to change this combo?", "Edit Combo"):
-                items = []
-                prices = []
-                for i in range(3):
-                    item = eg.enterbox(f"Enter new item {i+1} name:", default=combo["items"][i])
-                    price = eg.enterbox(f"Enter new price for {item}:", default=str(combo["prices"][i]))
-                    try:
-                        price = float(price)
-                        items.append(item)
-                        prices.append(price)
-                    except:
-                        eg.msgbox("Invalid price. Cancelling update.")
-                        break
-                else:
-                    menu[search] = {"items": items, "prices": prices}
-                    eg.msgbox("Combo updated successfully.")
+            monster = Monsters[search]
+            message = (
+                f"Name: {search}\n"
+                f"  Strength: {monster['Strength']}\n"
+                f"  Speed:    {monster['Speed']}\n"
+                f"  Stealth:  {monster['Stealth']}\n"
+                f"  Cunning:  {monster['Cunning']}\n"
+            )
+            eg.msgbox(message, "Monster Details")
+
+            if eg.ynbox("Do you want to change this monster?", "Edit Monster"):
+                try:
+                    strength = int(eg.enterbox("Enter new Strength 0-25:", default=str(monster["Strength"])))
+                    speed = int(eg.enterbox("Enter new Speed 0-25:", default=str(monster["Speed"])))
+                    stealth = int(eg.enterbox("Enter new Stealth 0-25:", default=str(monster["Stealth"])))
+                    cunning = int(eg.enterbox("Enter new Cunning 0-25:", default=str(monster["Cunning"])))
+
+                    Monsters[search] = {
+                        "Strength": strength,
+                        "Speed": speed,
+                        "Stealth": stealth,
+                        "Cunning": cunning
+                    }
+                    eg.msgbox("Monster updated successfully.")
+                except:
+                    eg.msgbox("Invalid input. Update cancelled.")
         else:
             eg.msgbox("Monster not found.")
 
