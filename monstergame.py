@@ -12,6 +12,8 @@ Monsters = {
 "Wispghoul": {"Strength": 17, "Speed": 19, "Stealth": 3, "Cunning":2}
 }
 
+
+
 while True:
 
     choice = eg.buttonbox("Welcome to the Monster game what would you like to do.", "Selection", 
@@ -64,7 +66,7 @@ while True:
 
                 if eg.ynbox("Do you want to change this monster?", "Edit Monster"):
                     try:
-                        # Strength validation loop
+                        # Strength Checking 
                         while True:
                             strength = int(eg.enterbox("Enter new Strength (0-25):", default=str(monster["Strength"])))
                             if 0 <= strength <= 25:
@@ -72,7 +74,7 @@ while True:
                             else:
                                 eg.msgbox("Strength must be between 0 and 25.")
 
-                        # Speed validation loop
+                        # Speed Checking
                         while True:
                             speed = int(eg.enterbox("Enter new Speed (0-25):", default=str(monster["Speed"])))
                             if 0 <= speed <= 25:
@@ -80,7 +82,7 @@ while True:
                             else:
                                 eg.msgbox("Speed must be between 0 and 25.")
 
-                        # Stealth validation loop
+                        # Stealth Checking
                         while True:
                             stealth = int(eg.enterbox("Enter new Stealth (0-25):", default=str(monster["Stealth"])))
                             if 0 <= stealth <= 25:
@@ -88,7 +90,7 @@ while True:
                             else:
                                 eg.msgbox("Stealth must be between 0 and 25.")
 
-                        # Cunning validation loop
+                        # Cunning Checking
                         while True:
                             cunning = int(eg.enterbox("Enter new Cunning (0-25):", default=str(monster["Cunning"])))
                             if 0 <= cunning <= 25:
@@ -96,7 +98,7 @@ while True:
                             else:
                                 eg.msgbox("Cunning must be between 0 and 25.")
 
-                        # Save updates
+                        # save the monster 
                         Monsters[search] = {
                             "Strength": strength,
                             "Speed": speed,
@@ -111,14 +113,25 @@ while True:
                 eg.msgbox("Monster not found.")
 
     elif choice == "Delete Card":
-         
-        delete = eg.enterbox("Enter the name of the Monster you want to delete:", title="Delete")
-        if delete in Monsters:
-            if eg.ynbox(f"Are you sure you want to delete '{delete}'?", "Confirm Delete"):
-                del Monsters[delete]
-                eg.msgbox(f"'{delete}' monster deleted.")
-        else:
-            eg.msgbox("Monster not found.")
+                
+                output2 = ""
+                for monster_id, info in Monsters.items():
+                    output2 += f"Name: {monster_id}\n"   
+
+
+                delete = eg.enterbox(
+                    "Enter the name of the Monster you want to delete:\n\n" + output2,
+                    title="Delete"
+                )
+
+
+                    
+                if delete in Monsters:
+                        if eg.ynbox(f"Are you sure you want to delete '{delete}'?", "Confirm Delete"):
+                            del Monsters[delete]
+                            eg.msgbox(f"'{delete}' monster deleted.")
+                else:
+                    eg.msgbox("Monster not found.")
 
     elif choice == "Exit":
 
