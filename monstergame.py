@@ -35,13 +35,32 @@ while True:
     elif choice == "Add Card":
      
         name = eg.enterbox("Enter the name of the new Monster:", "Add Monster Card")
-        if name:
-                strength = int(eg.enterbox(f"Enter {name}'s Strength 0-25:"))
-                speed = int(eg.enterbox(f"Enter {name}'s Speed 0-25:"))
-                stealth = int(eg.enterbox(f"Enter {name}'s Stealth 0-25:"))
-                cunning = int(eg.enterbox(f"Enter {name}'s Cunning 0-25:"))
-
-                Monsters[name] = {
+        
+        while True:
+                    strength = int(eg.enterbox(f"Enter {name}'s Strength 0-25:"))
+                    if 0 <= strength <= 25:
+                                break
+                    else:
+                        eg.msgbox("Strength must be between 0 and 25.")
+        while True:
+                    speed = int(eg.enterbox(f"Enter {name}'s Speed 0-25:"))
+                    if 0 <= strength <= 25:
+                                break
+                    else:
+                        eg.msgbox("Strength must be between 0 and 25.")
+        while True:      
+                    stealth = int(eg.enterbox(f"Enter {name}'s Stealth 0-25:"))
+                    if 0 <= strength <= 25:
+                                break
+                    else:
+                        eg.msgbox("Strength must be between 0 and 25.")
+        while True:        
+                    cunning = int(eg.enterbox(f"Enter {name}'s Cunning 0-25:"))
+                    if 0 <= strength <= 25:
+                                break
+                    else:
+                        eg.msgbox("Strength must be between 0 and 25.")
+        Monsters[name] = {
                 f"\nName: {monster_id} \n"
                 f"  Strength: {info['Strength']}\n"
                 f"  Speed:    {info['Speed']}\n"
@@ -49,7 +68,7 @@ while True:
                 f"  Cunning:  {info['Cunning']}\n"
                 }
 
-                eg.msgbox(f"Monster '{name}' added successfully!")
+        eg.msgbox(f"Monster '{name}' added successfully!")
 
     elif choice == "Search/Change":
             search = eg.enterbox("Enter the name of the monster to search:", "Search/Edit")
