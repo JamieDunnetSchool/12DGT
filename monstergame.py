@@ -34,6 +34,8 @@ while True:
 
     elif choice == "Add Card":
      
+
+     
         name = eg.enterbox("Enter the name of the new Monster:", "Add Monster Card")
         
         while True:
@@ -44,31 +46,27 @@ while True:
                         eg.msgbox("Strength must be between 0 and 25.")
         while True:
                     speed = int(eg.enterbox(f"Enter {name}'s Speed 0-25:"))
-                    if 0 <= strength <= 25:
+                    if 0 <= speed <= 25:
                                 break
                     else:
                         eg.msgbox("Strength must be between 0 and 25.")
         while True:      
                     stealth = int(eg.enterbox(f"Enter {name}'s Stealth 0-25:"))
-                    if 0 <= strength <= 25:
+                    if 0 <= stealth <= 25:
                                 break
                     else:
                         eg.msgbox("Strength must be between 0 and 25.")
         while True:        
                     cunning = int(eg.enterbox(f"Enter {name}'s Cunning 0-25:"))
-                    if 0 <= strength <= 25:
+                    if 0 <= cunning <= 25:
                                 break
                     else:
                         eg.msgbox("Strength must be between 0 and 25.")
-        Monsters[name] = {
-                f"\nName: {monster_id} \n"
-                f"  Strength: {info['Strength']}\n"
-                f"  Speed:    {info['Speed']}\n"
-                f"  Stealth:  {info['Stealth']}\n"
-                f"  Cunning:  {info['Cunning']}\n"
-                }
+
+        Monsters[name] = {"Strength": strength, "Speed": speed, "Stealth": stealth, "Cunning": cunning}
 
         eg.msgbox(f"Monster '{name}' added successfully!")
+
 
     elif choice == "Search/Change":
             search = eg.enterbox("Enter the name of the monster to search:", "Search/Edit")
