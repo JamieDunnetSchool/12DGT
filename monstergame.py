@@ -1,3 +1,4 @@
+###This program lets the user look and edit the monster cards
 import easygui as eg
 Monsters = {
     "Stoneling": {"Strength": 7, "Speed": 1, "Stealth": 25, "Cunning": 15},
@@ -55,7 +56,7 @@ while True:
                                 break
                     else:
                         eg.msgbox("Strength must be between 0 and 25.")
-            
+        #
         verify = (
                 f"Are you sure you want to add this monster?\n\n"
                 f"Name: {name}\n"
