@@ -1,4 +1,5 @@
-###This program lets the user look and edit the monster cards
+"""This program lets the user look and edit the monster cards cataloge."""
+
 import easygui as eg
 Monsters = {
     "Stoneling": {"Strength": 7, "Speed": 1, "Stealth": 25, "Cunning": 15},
@@ -7,14 +8,16 @@ Monsters = {
     "Blazegolem": {"Strength": 15, "Speed": 20, "Stealth": 23, "Cunning": 6},
     "Websnake": {"Strength": 7, "Speed": 15, "Stealth": 10, "Cunning": 5},
     "Moldvine": {"Strength": 21, "Speed": 18, "Stealth": 14, "Cunning": 5},
-    "Vortexwing": {"Strength": 19, "Speed": 13, "Stealth": 19, "Cunning":2},
-    "Rotthing": {"Strength": 16, "Speed": 7, "Stealth": 4, "Cunning":12},
-    "Froststep": {"Strength": 14, "Speed": 14, "Stealth": 17, "Cunning":4},
-    "Wispghoul": {"Strength": 17, "Speed": 19, "Stealth": 3, "Cunning":2}
+    "Vortexwing": {"Strength": 19, "Speed": 13, "Stealth": 19, "Cunning": 2},
+    "Rotthing": {"Strength": 16, "Speed": 7, "Stealth": 4, "Cunning": 12},
+    "Froststep": {"Strength": 14, "Speed": 14, "Stealth": 17, "Cunning": 4},
+    "Wispghoul": {"Strength": 17, "Speed": 19, "Stealth": 3, "Cunning": 2}
 }
 while True:
-    choice = eg.buttonbox("Welcome to the Monster game what would you like to do.", "Selection",
-                          choices=["View Cards", "Add Card", "Search/Change", "Delete Card", "Exit"])
+    choice = eg.buttonbox(
+        "Welcome to the Monster game what would you like to do.", "Selection",
+        choices=["View Cards", "Add Card", "Search/Change",
+                 "Delete Card", "Exit"])
 
     # View cards
     if choice == "View Cards":
@@ -28,35 +31,35 @@ while True:
                 f"  Cunning:  {info['Cunning']}\n"
             )
         eg.msgbox(output or "No monsters yet.", "View Cataloge")
-        
-# Add cards 
+
+# Add cards
     elif choice == "Add Card":
-        name = eg.enterbox("Enter the name of the new Monster:", "Add Monster Card")
+        name = eg.enterbox("Enter the name of the new Monster:",
+                           "Add Monster Card")
         while True:
-                    strength = int(eg.enterbox(f"Enter {name}'s Strength 0-25:"))
-                    if 0 <= strength <= 25:
-                                break
-                    else:
-                        eg.msgbox("Strength must be between 0 and 25.")
+            strength = int(eg.enterbox(f"Enter {name}'s Strength 0-25:"))
+            if 0 <= strength <= 25:
+                break
+            else:
+                eg.msgbox("Strength must be between 0 and 25.")
         while True:
-                    speed = int(eg.enterbox(f"Enter {name}'s Speed 0-25:"))
-                    if 0 <= speed <= 25:
-                                break
-                    else:
-                        eg.msgbox("Strength must be between 0 and 25.")
+            speed = int(eg.enterbox(f"Enter {name}'s Speed 0-25:"))
+            if 0 <= speed <= 25:
+                break
+            else:
+                eg.msgbox("Strength must be between 0 and 25.")
         while True:
-                    stealth = int(eg.enterbox(f"Enter {name}'s Stealth 0-25:"))
-                    if 0 <= stealth <= 25:
-                                break
-                    else:
-                        eg.msgbox("Strength must be between 0 and 25.")
+            stealth = int(eg.enterbox(f"Enter {name}'s Stealth 0-25:"))
+            if 0 <= stealth <= 25:
+                break
+            else:
+                eg.msgbox("Strength must be between 0 and 25.")
         while True:
-                    cunning = int(eg.enterbox(f"Enter {name}'s Cunning 0-25:"))
-                    if 0 <= cunning <= 25:
-                                break
-                    else:
-                        eg.msgbox("Strength must be between 0 and 25.")
-        #
+            cunning = int(eg.enterbox(f"Enter {name}'s Cunning 0-25:"))
+            if 0 <= cunning <= 25:
+                break
+            else:
+                eg.msgbox("Strength must be between 0 and 25.")
         verify = (
                 f"Are you sure you want to add this monster?\n\n"
                 f"Name: {name}\n"
@@ -74,7 +77,12 @@ while True:
 
 #Search and Edit cards
     elif choice == "Search/Change":
-            search = eg.enterbox("Enter the name of the monster to search:", "Search/Edit")
+           
+            output2 = ""
+            for monster_id, info in Monsters.items():
+                    output2 += f"Name: {monster_id}\n"
+            search = eg.enterbox("Enter the name of the monster to search:\n\n" + output2, title="Search/Edit" )
+
             if search in Monsters:
                 monster = Monsters[search]
                 message = (
