@@ -37,29 +37,29 @@ while True:
         name = eg.enterbox("Enter the name of the new Monster:",
                            "Add Monster Card")
         while True:
-            strength = int(eg.enterbox(f"Enter {name}'s Strength 0-25:"))
-            if 0 <= strength <= 25:
+            strength = int(eg.enterbox(f"Enter {name}'s Strength 1-25:"))
+            if 1 <= strength <= 25:
                 break
             else:
-                eg.msgbox("Strength must be between 0 and 25.")
+                eg.msgbox("Strength must be between 1 and 25.")
         while True:
-            speed = int(eg.enterbox(f"Enter {name}'s Speed 0-25:"))
-            if 0 <= speed <= 25:
+            speed = int(eg.enterbox(f"Enter {name}'s Speed 1-25:"))
+            if 1 <= speed <= 25:
                 break
             else:
-                eg.msgbox("Strength must be between 0 and 25.")
+                eg.msgbox("Strength must be between 1 and 25.")
         while True:
-            stealth = int(eg.enterbox(f"Enter {name}'s Stealth 0-25:"))
-            if 0 <= stealth <= 25:
+            stealth = int(eg.enterbox(f"Enter {name}'s Stealth 1-25:"))
+            if 1 <= stealth <= 25:
                 break
             else:
-                eg.msgbox("Strength must be between 0 and 25.")
+                eg.msgbox("Strength must be between 1 and 25.")
         while True:
-            cunning = int(eg.enterbox(f"Enter {name}'s Cunning 0-25:"))
-            if 0 <= cunning <= 25:
+            cunning = int(eg.enterbox(f"Enter {name}'s Cunning 1-25:"))
+            if 1 <= cunning <= 25:
                 break
             else:
-                eg.msgbox("Strength must be between 0 and 25.")
+                eg.msgbox("Strength must be between 1 and 25.")
         verify = (
                 f"Are you sure you want to add this monster?\n\n"
                 f"Name: {name}\n"
@@ -98,35 +98,35 @@ while True:
                     try:
                         # Strength Checking 
                         while True:
-                            strength = int(eg.enterbox("Enter new Strength (0-25):", default=str(monster["Strength"])))
-                            if 0 <= strength <= 25:
+                            strength = int(eg.enterbox("Enter new Strength (1-25):", default=str(monster["Strength"])))
+                            if 1 <= strength <= 25:
                                 break
                             else:
-                                eg.msgbox("Strength must be between 0 and 25.")
+                                eg.msgbox("Strength must be between 1 and 25.")
 
                         # Speed Checking
                         while True:
-                            speed = int(eg.enterbox("Enter new Speed (0-25):", default=str(monster["Speed"])))
-                            if 0 <= speed <= 25:
+                            speed = int(eg.enterbox("Enter new Speed (1-25):", default=str(monster["Speed"])))
+                            if 1 <= speed <= 25:
                                 break
                             else:
-                                eg.msgbox("Speed must be between 0 and 25.")
+                                eg.msgbox("Speed must be between 1 and 25.")
 
                         # Stealth Checking
                         while True:
-                            stealth = int(eg.enterbox("Enter new Stealth (0-25):", default=str(monster["Stealth"])))
-                            if 0 <= stealth <= 25:
+                            stealth = int(eg.enterbox("Enter new Stealth (1-25):", default=str(monster["Stealth"])))
+                            if 1 <= stealth <= 25:
                                 break
                             else:
-                                eg.msgbox("Stealth must be between 0 and 25.")
+                                eg.msgbox("Stealth must be between 1 and 25.")
 
                         # Cunning Checking
                         while True:
-                            cunning = int(eg.enterbox("Enter new Cunning (0-25):", default=str(monster["Cunning"])))
-                            if 0 <= cunning <= 25:
+                            cunning = int(eg.enterbox("Enter new Cunning (1-25):", default=str(monster["Cunning"])))
+                            if 1 <= cunning <= 25:
                                 break
                             else:
-                                eg.msgbox("Cunning must be between 0 and 25.")
+                                eg.msgbox("Cunning must be between 1 and 25.")
 
                         # save the monster 
                         Monsters[search] = {
