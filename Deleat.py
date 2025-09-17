@@ -11,12 +11,19 @@ Monsters = {
 "Froststep": {"Strength": 14, "Speed": 14, "Stealth": 17, "Cunning":4}, 
 "Wispghoul": {"Strength": 17, "Speed": 19, "Stealth": 3, "Cunning":2}
 }
-   
-   
-delete = eg.enterbox("Enter the name of the Monster you want to delete:", title="Delete")
-if delete in Monsters:
-        if eg.ynbox(f"Are you sure you want to delete '{delete}'?", "Confirm Delete"):
-                del Monsters[delete]
-                eg.msgbox(f"'{delete}' monster deleted.")
+
+output2 = ""
+for monster_id, info in Monsters.items():
+        output2 += f"Name: {monster_id}\n"
+
+        delete = eg.enterbox(
+                "Enter the name of the Monster you want to delete:\n\n" + output2,
+                title="Delete"
+                )
+
+        if delete in Monsters:
+                        if eg.ynbox(f"Are you sure you want to delete '{delete}'?", "Confirm Delete"):
+                            del Monsters[delete]
+                            eg.msgbox(f"'{delete}' monster deleted.")
         else:
-            eg.msgbox("Monster not found.")
+                    eg.msgbox("Monster not found.")
