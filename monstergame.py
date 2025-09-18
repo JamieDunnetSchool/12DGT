@@ -6,7 +6,7 @@ Add_Title = "Add Monster Card"
 Selection_Titile = "Selection"
 Edit_title = "Edit Cards"
 Error_title = "Error"
-View_Title = 
+View_Title = "View Catalouge"
 max = 25
 min = 1
 
@@ -41,7 +41,7 @@ while True:
                 f"  Stealth:  {info['Stealth']}\n"
                 f"  Cunning:  {info['Cunning']}\n"
             )
-        eg.msgbox(output or "No monsters yet.", "View Cataloge")
+        eg.msgbox(output or "No monsters yet.", View_Title)
 
 # Add cards
     elif choice == "Add Card":
