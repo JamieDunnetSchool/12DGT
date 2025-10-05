@@ -29,7 +29,7 @@ def Main_menu():
     choice = eg.buttonbox(
     "Welcome to the Monster game what would you like to do.", Selection_Titile,
     choices=["View Cards", "Add Card", "Search/Change","Delete Card", "Exit"])
-    if choice == "View cards":
+    if choice == "View Cards":
         View()
     elif choice == "Add Card":
         add()
@@ -51,7 +51,7 @@ def View():
             f"  Cunning:  {info['Cunning']}\n"
         )
     eg.msgbox(output or "No monsters yet.", View_Title)
-
+    Main_menu()
 # Add cards
 def add():
     name = eg.enterbox("Enter the name of the new Monster:", Add_Title)
@@ -93,7 +93,7 @@ def add():
             eg.msgbox(f"Monster '{name}' added successfully!")
     else:
             eg.msgbox("Monster not added.")
-
+    Main_menu()
 #Search and Edit cards
 def search_edit():
     output2 = ""
@@ -159,6 +159,7 @@ def search_edit():
                 eg.msgbox("Invalid input. Update cancelled.", Error_title)
     else:
         eg.msgbox("Monster not found.")
+Main_menu()
 # Delete Card
 def delete():     
     output2 = ""
@@ -175,6 +176,12 @@ def delete():
                 eg.msgbox(f"'{delete}' monster deleted.")
     else:
         eg.msgbox("Monster not found.")
+
+Main_menu()
 # Exit 
 def exit():
     quit
+
+
+
+Main_menu()
