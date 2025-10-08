@@ -25,12 +25,14 @@ Monsters = {
     "Wispghoul": {"Strength": 17, "Speed": 19, "Stealth": 3, "Cunning": 2}
 }
 #opening menu 
-def Main_menu():
+def main_menu():
     choice = eg.buttonbox(
     "Welcome to the Monster game what would you like to do.", Selection_Titile,
-    choices=["View Cards", "Add Card", "Search/Change","Delete Card", "Exit"])
+    choices=["View Cards", "Print Cards", "Add Card", "Search/Change","Delete Card", "Exit"])
     if choice == "View Cards":
-        View()
+        view()
+    elif choice == "Print Cards":
+        print_monsters()
     elif choice == "Add Card":
         add()
     elif choice == "Search/Change":
@@ -39,8 +41,18 @@ def Main_menu():
         delete()
     elif choice == "Exit":
         exit()
+#Printing 
+def print_monsters():
+    for monster_id, info in Monsters.items():
+        print (f"\nName: {monster_id} \n")
+        print(f"  Strength: {info['Strength']}\n")
+        print(f"  Speed:    {info['Speed']}\n")
+        print(f"  Stealth:  {info['Stealth']}\n")
+        print (f"  Cunning:  {info['Cunning']}\n")
+    
+    main_menu()
 # View cards
-def View():
+def view():
     output = ""
     for monster_id, info in Monsters.items():
         output += (
@@ -51,7 +63,7 @@ def View():
             f"  Cunning:  {info['Cunning']}\n"
         )
     eg.msgbox(output or "No monsters yet.", View_Title)
-    Main_menu()
+    main_menu()
 # Add cards
 def add():
     name = eg.enterbox("Enter the name of the new Monster:", Add_Title)
@@ -93,7 +105,7 @@ def add():
             eg.msgbox(f"Monster '{name}' added successfully!")
     else:
             eg.msgbox("Monster not added.")
-    Main_menu()
+    main_menu()
 #Search and Edit cards
 def search_edit():
     output2 = ""
@@ -110,9 +122,7 @@ def search_edit():
             f"  Stealth:  {monster['Stealth']}\n"
             f"  Cunning:  {monster['Cunning']}\n"
         )
-        eg.msgbox(message, "Monster Details")
-
-        if eg.ynbox("Do you want to change this monster?", Edit_title):
+        if eg.ynbox(message + "\n Do you want to change this monster?", Edit_title):
             try:
                 # Strength Checking 
                 while True:
@@ -159,7 +169,7 @@ def search_edit():
                 eg.msgbox("Invalid input. Update cancelled.", Error_title)
     else:
         eg.msgbox("Monster not found.")
-Main_menu()
+    main_menu()
 # Delete Card
 def delete():     
     output2 = ""
@@ -177,11 +187,11 @@ def delete():
     else:
         eg.msgbox("Monster not found.")
 
-Main_menu()
+    main_menu()
 # Exit 
 def exit():
     quit
 
 
 
-Main_menu()
+main_menu()
