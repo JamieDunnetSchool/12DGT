@@ -50,16 +50,18 @@ def main_menu():
 
 
 def print_monsters():
-    """Return the allows the user to print the mosters to the terminal."""
-    # For how much mosters we have it will print the each one till finshed.
+    """Print all monstrs to the terainal."""
+    output = ""
     for monster_id, info in Monsters.items():
-        print(f"\nName: {monster_id} \n")
-        print(f"  Strength: {info['Strength']}\n")
-        print(f"  Speed:    {info['Speed']}\n")
-        print(f"  Stealth:  {info['Stealth']}\n")
-        print(f"  Cunning:  {info['Cunning']}\n")
-        main_menu()
-# View cards
+        output += (
+            f"\nName: {monster_id}\n"
+            f"  Strength: {info['Strength']}\n"
+            f"  Speed:    {info['Speed']}\n"
+            f"  Stealth:  {info['Stealth']}\n"
+            f"  Cunning:  {info['Cunning']}\n"
+        )
+    print(output)
+    main_menu()
 
 
 def view():
