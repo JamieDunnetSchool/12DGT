@@ -8,6 +8,7 @@ Selection_Titile = "Main Menu"
 Edit_title = "Edit Cards"
 Error_title = "Error"
 View_Title = "View Catalouge"
+Error_Mesage = "Input Error"
 min = 1
 max = 25
 
@@ -83,7 +84,21 @@ def view():
 
 def add():
     """Return the allows the user add cards to the dictornary."""
-    name = eg.enterbox("Enter the name of the new Monster:", Add_Title)
+    while True:
+        name = eg.enterbox("Enter the name of the new Monster:", Add_Title)
+        
+          # If user canceled or closes window
+        if name is None:
+            main_menu()
+            return
+        
+        # If user enters nothing
+        if name.strip() == "":
+            eg.msgbox("You must enter a monster name.", Error_Mesage)
+            continue
+        # Valid input
+        break
+
     while True:
         # Chose all the stats for the monster
         strength = eg.integerbox(f"Enter {name}'s Strength between "
@@ -102,7 +117,7 @@ def add():
             break
         else:
             eg.msgbox("Strength must be between " + str(min)
-                      + " and " + str(max) + ".")
+                      + " and " + str(max) + ".", Error_Mesage)
     while True:
         stealth = eg.integerbox(f"Enter {name}'s Stealth between "
                                 + str(min) + " and " + str(max) + ".")
@@ -111,7 +126,7 @@ def add():
             break
         else:
             eg.msgbox("Strength must be between " + str(min)
-                      + " and " + str(max) + ".")
+                      + " and " + str(max) + ".", Error_Mesage)
     while True:
         cunning = eg.integerbox(f"Enter {name}'s Cunning between"
                                 + str(min) + " and " + str(max) + ".")
@@ -120,7 +135,7 @@ def add():
             break
         else:
             eg.msgbox("Strength must be between " + str(min)
-                      + " and " + str(max) + ".")
+                      + " and " + str(max) + ".", Error_Mesage)
             # Verifying id the user wants to put them info in
     verify = (
             f"Are you sure you want to add this monster?\n\n"
