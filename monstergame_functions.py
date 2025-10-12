@@ -98,45 +98,47 @@ def add():
             continue
         # Valid input
         break
-
-    while True:
-        # Chose all the stats for the monster
-        strength = eg.integerbox(f"Enter {name}'s Strength between "
-                                 + str(min) + " and " + str(max) + ".")
-        # Limitng inbetween the max and the min
-        if min <= strength <= max:
-            break
-        else:
-            eg.msgbox("Strength must be between " + str(min)
-                      + " and " + str(max) + ".")
-    while True:
-        speed = eg.integerbox(f"Enter {name}'s Speed between "
-                              + str(min) + " and " + str(max) + ".")
-        # Limitng inbetween the max and the min
-        if min <= speed <= max:
-            break
-        else:
-            eg.msgbox("Strength must be between " + str(min)
-                      + " and " + str(max) + ".", Error_Mesage)
-    while True:
-        stealth = eg.integerbox(f"Enter {name}'s Stealth between "
+    try:
+        while True:
+            # Chose all the stats for the monster
+            strength = eg.integerbox(f"Enter {name}'s Strength between "
+                                    + str(min) + " and " + str(max) + ".")
+            # Limitng inbetween the max and the min
+            if min <= strength <= max:
+                break
+            else:
+                eg.msgbox("Strength must be between " + str(min)
+                        + " and " + str(max) + ".", Error_Mesage)
+        while True:
+            speed = eg.integerbox(f"Enter {name}'s Speed between "
                                 + str(min) + " and " + str(max) + ".")
-        # Limitng inbetween the max and the min
-        if min <= strength <= max:
-            break
-        else:
-            eg.msgbox("Strength must be between " + str(min)
-                      + " and " + str(max) + ".", Error_Mesage)
-    while True:
-        cunning = eg.integerbox(f"Enter {name}'s Cunning between"
-                                + str(min) + " and " + str(max) + ".")
-        # Limitng inbetween the max and the min
-        if min <= cunning <= max:
-            break
-        else:
-            eg.msgbox("Strength must be between " + str(min)
-                      + " and " + str(max) + ".", Error_Mesage)
-            # Verifying id the user wants to put them info in
+            # Limitng inbetween the max and the min
+            if min <= speed <= max:
+                break
+            else:
+                eg.msgbox("Strength must be between " + str(min)
+                        + " and " + str(max) + ".", Error_Mesage)
+        while True:
+            stealth = eg.integerbox(f"Enter {name}'s Stealth between "
+                                    + str(min) + " and " + str(max) + ".")
+            # Limitng inbetween the max and the min
+            if min <= strength <= max:
+                break
+            else:
+                eg.msgbox("Strength must be between " + str(min)
+                        + " and " + str(max) + ".", Error_Mesage)
+        while True:
+            cunning = eg.integerbox(f"Enter {name}'s Cunning between"
+                                    + str(min) + " and " + str(max) + ".")
+            # Limitng inbetween the max and the min
+            if min <= cunning <= max:
+                break
+            else:
+                eg.msgbox("Strength must be between " + str(min)
+                        + " and " + str(max) + ".", Error_Mesage)
+                # Verifying id the user wants to put them info in
+    except Exception:
+        eg.msgbox("Invalid input. Update cancelled.", Error_title)
     verify = (
             f"Are you sure you want to add this monster?\n\n"
             f"Name: {name}\n"
@@ -188,7 +190,7 @@ def search_edit():
                         break
                     else:
                         eg.msgbox("Strength must be between " + str(min)
-                                  + " and " + str(max) + ".")
+                                  + " and " + str(max) + ".", Error_Mesage)
 
                 # Speed Checking
                 while True:
@@ -200,7 +202,7 @@ def search_edit():
                         break
                     else:
                         eg.msgbox("Speed must be between " + str(min)
-                                  + " and " + str(max) + ".")
+                                  + " and " + str(max) + ".", Error_Mesage)
 
                 # Stealth Checking
                 while True:
@@ -213,7 +215,7 @@ def search_edit():
                         break
                     else:
                         eg.msgbox("Stealth must be between " + str(min)
-                                  + " and " + str(max) + ".")
+                                  + " and " + str(max) + ".", Error_Mesage)
 
                 # Cunning Checking
                 while True:
@@ -226,7 +228,7 @@ def search_edit():
                         break
                     else:
                         eg.msgbox("Cunning must be between " + str(min)
-                                  + " and " + str(max) + ".")
+                                  + " and " + str(max) + ".", Error_Mesage)
 
                 # Save the monster
                 Monsters[search] = {
