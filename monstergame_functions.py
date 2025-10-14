@@ -97,7 +97,12 @@ def add():
             eg.msgbox("You must enter a monster name.", Error_Mesage)
             continue
         # Valid input
-        break
+        else: 
+            break
+        elif name in Monsters:
+            eg.msgbox("That name is already taken pick a new one")
+        else:
+            break
     try:
         while True:
             # Chose all the stats for the monster
