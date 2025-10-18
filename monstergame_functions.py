@@ -87,22 +87,21 @@ def add():
     while True:
         name = eg.enterbox("Enter the name of the new Monster:", Add_Title)
         
-          # If user canceled or closes window
+        # If user cancels or closes
         if name is None:
             main_menu()
             return
-        
         # If user enters nothing
         if name.strip() == "":
             eg.msgbox("You must enter a monster name.", Error_Mesage)
             continue
-        # Valid input
-        else: 
-            break
-        elif name in Monsters:
-            eg.msgbox("That name is already taken pick a new one")
-        else:
-            break
+        # If the name already is in the dictionary
+        if name in Monsters:
+            eg.msgbox("That name is already taken. Please pick a new one.", Error_Mesage)
+            continue
+        
+        # Valid name
+        break
     try:
         while True:
             # Chose all the stats for the monster
@@ -170,8 +169,12 @@ def search_edit():
         output2 += f"Name: {monster_id}\n"
     search = eg.enterbox("Enter the name of the monster to search:\n\n"
                          + output2, Serch_Editing_Title)
+        # If user enters nothing
+    if search.strip() == "":
+        eg.msgbox("You must enter a monster name.", Error_Mesage)
+    
     # Checking if the moster they searched is in the dictorneary.
-    if search in Monsters:
+    elif search in Monsters:
         monster = Monsters[search]
         message = (
             f"Name: {search}\n"
