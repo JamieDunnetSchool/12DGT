@@ -260,21 +260,29 @@ def delete():
     output2 = ""
     for monster_id, info in Monsters.items():
         output2 += f"Name: {monster_id}\n"
+    
+    while True: 
+        delete = eg.enterbox(
+            "Enter the name of the Monster you want to delete:\n\n"
+            + output2, Del_Titile
+        )
+        # Confrimation if they would like to deleat the monster
+    
+        if delete in Monsters:
+            if eg.ynbox(f"Are you sure you want to delete '{delete}'?",
+                        Del_Titile):
+                del Monsters[delete]
+                eg.msgbox(f"'{delete}' monster deleted.")
+        elif delete is None:
+            main_menu()
+            return
+        elif delete.strip() == "":
+                eg.msgbox("You must enter a monster name.", Error_Mesage)
+                continue
+        else:
+            eg.msgbox("Monster not found.")
 
-    delete = eg.enterbox(
-        "Enter the name of the Monster you want to delete:\n\n"
-        + output2, Del_Titile
-    )
-    # Confrimation if they would like to deleat the monster
-    if delete in Monsters:
-        if eg.ynbox(f"Are you sure you want to delete '{delete}'?",
-                    Del_Titile):
-            del Monsters[delete]
-            eg.msgbox(f"'{delete}' monster deleted.")
-    else:
-        eg.msgbox("Monster not found.")
-
-    main_menu()
+        main_menu()
 # Exit
 
 
