@@ -143,6 +143,7 @@ def add():
                 # Verifying id the user wants to put them info in
     except Exception:
         eg.msgbox("Invalid input. Update cancelled.", Error_title)
+        main_menu()
     verify = (
             f"Are you sure you want to add this monster?\n\n"
             f"Name: {name}\n"
@@ -167,92 +168,97 @@ def search_edit():
     output2 = ""
     for monster_id, info in Monsters.items():
         output2 += f"Name: {monster_id}\n"
-    search = eg.enterbox("Enter the name of the monster to search:\n\n"
-                         + output2, Serch_Editing_Title)
-        # If user enters nothing
-    if search.strip() == "":
-        eg.msgbox("You must enter a monster name.", Error_Mesage)
-    
-    # Checking if the moster they searched is in the dictorneary.
-    elif search in Monsters:
-        monster = Monsters[search]
-        message = (
-            f"Name: {search}\n"
-            f"  Strength: {monster['Strength']}\n"
-            f"  Speed:    {monster['Speed']}\n"
-            f"  Stealth:  {monster['Stealth']}\n"
-            f"  Cunning:  {monster['Cunning']}\n"
-        )
-        # Askeing if they want to edit the monster
-        if eg.ynbox(message + "\n Do you want to change this monster?",
-                    Edit_title):
-            try:
-                # Strength Checking
-                while True:
-                    strength = eg.integerbox("Enter new Strength between " +
-                                             str(min) + " and " + str(max)
-                                             + ".",
-                                             default=str(monster["Strength"]))
-                    # Limitng inbetween the max and the min
-                    if min <= strength <= max:
-                        break
-                    else:
-                        eg.msgbox("Strength must be between " + str(min)
-                                  + " and " + str(max) + ".", Error_Mesage)
+    while True:
+        search = eg.enterbox("Enter the name of the monster to search:\n\n"
+                            + output2, Serch_Editing_Title)
+            # If user enters nothing
+        if search is None:
+            main_menu()
+            return
 
-                # Speed Checking
-                while True:
-                    speed = eg.integerbox("Enter new Speed between " + str(min)
-                                          + " and " + str(max) + ".",
-                                            default=str(monster["Speed"]))
-                    # Limitng inbetween the max and the min
-                    if min <= speed <= max:
-                        break
-                    else:
-                        eg.msgbox("Speed must be between " + str(min)
-                                  + " and " + str(max) + ".", Error_Mesage)
+        if search.strip() == "":
+            eg.msgbox("You must enter a monster name.", Error_Mesage)
+            continue
+        # Checking if the moster they searched is in the dictorneary.
+        elif search in Monsters:
+            monster = Monsters[search]
+            message = (
+                f"Name: {search}\n"
+                f"  Strength: {monster['Strength']}\n"
+                f"  Speed:    {monster['Speed']}\n"
+                f"  Stealth:  {monster['Stealth']}\n"
+                f"  Cunning:  {monster['Cunning']}\n"
+            )
+            # Askeing if they want to edit the monster
+            if eg.ynbox(message + "\n Do you want to change this monster?",
+                        Edit_title):
+                try:
+                    # Strength Checking
+                    while True:
+                        strength = eg.integerbox("Enter new Strength between " +
+                                                str(min) + " and " + str(max)
+                                                + ".",
+                                                default=str(monster["Strength"]))
+                        # Limitng inbetween the max and the min
+                        if min <= strength <= max:
+                            break
+                        else:
+                            eg.msgbox("Strength must be between " + str(min)
+                                    + " and " + str(max) + ".", Error_Mesage)
 
-                # Stealth Checking
-                while True:
-                    stealth = eg.integerbox("Enter new Stealth between "
-                                            + str(min)
+                    # Speed Checking
+                    while True:
+                        speed = eg.integerbox("Enter new Speed between " + str(min)
                                             + " and " + str(max) + ".",
-                                            default=str(monster["Stealth"]))
-                    # Limitng inbetween the max and the min
-                    if min <= stealth <= max:
-                        break
-                    else:
-                        eg.msgbox("Stealth must be between " + str(min)
-                                  + " and " + str(max) + ".", Error_Mesage)
+                                                default=str(monster["Speed"]))
+                        # Limitng inbetween the max and the min
+                        if min <= speed <= max:
+                            break
+                        else:
+                            eg.msgbox("Speed must be between " + str(min)
+                                    + " and " + str(max) + ".", Error_Mesage)
 
-                # Cunning Checking
-                while True:
-                    cunning = eg.integerbox("Enter new Cunning between "
-                                            + str(min)
-                                            + " and " + str(max) + ".",
-                                            default=str(monster["Cunning"]))
-                    # Limitng inbetween the max and the min
-                    if min <= cunning <= max:
-                        break
-                    else:
-                        eg.msgbox("Cunning must be between " + str(min)
-                                  + " and " + str(max) + ".", Error_Mesage)
+                    # Stealth Checking
+                    while True:
+                        stealth = eg.integerbox("Enter new Stealth between "
+                                                + str(min)
+                                                + " and " + str(max) + ".",
+                                                default=str(monster["Stealth"]))
+                        # Limitng inbetween the max and the min
+                        if min <= stealth <= max:
+                            break
+                        else:
+                            eg.msgbox("Stealth must be between " + str(min)
+                                    + " and " + str(max) + ".", Error_Mesage)
 
-                # Save the monster
-                Monsters[search] = {
-                    "Strength": strength,
-                    "Speed": speed,
-                    "Stealth": stealth,
-                    "Cunning": cunning
-                }
-                eg.msgbox("Monster updated successfully.", "Success")
+                    # Cunning Checking
+                    while True:
+                        cunning = eg.integerbox("Enter new Cunning between "
+                                                + str(min)
+                                                + " and " + str(max) + ".",
+                                                default=str(monster["Cunning"]))
+                        # Limitng inbetween the max and the min
+                        if min <= cunning <= max:
+                            break
+                        else:
+                            eg.msgbox("Cunning must be between " + str(min)
+                                    + " and " + str(max) + ".", Error_Mesage)
 
-            except Exception:
-                eg.msgbox("Invalid input. Update cancelled.", Error_title)
-    else:
-        eg.msgbox("Monster not found.")
-    main_menu()
-# Delete Card
+                    # Save the monster
+                    Monsters[search] = {
+                        "Strength": strength,
+                        "Speed": speed,
+                        "Stealth": stealth,
+                        "Cunning": cunning
+                    }
+                    eg.msgbox("Monster updated successfully.", "Success")
+
+                except Exception:
+                    eg.msgbox("Invalid input. Update cancelled.", Error_title)
+        else:
+            eg.msgbox("Monster not found.")
+        main_menu()
+    # Delete Card
 
 
 def delete():
